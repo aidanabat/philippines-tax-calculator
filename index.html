@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> Philippines Tax Calculator </title>
+        <meta name="description" content="Simple calculators to calculate your tax in the Philippines" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet" />
+      </head>
+
+      <body>
+        <table>
+          <tr height="3rem">
+            <td colspan = 2>
+            <!-- Contributions -->
+                <div class = "card">
+                  <div class = "container">
+                      <h4><b> SSS Contribution </b></h4>
+                      <h3>Monthly Income</h2>
+                      <input name = "SSSIncome" type ="number" id="SSSInput">
+                      <button onclick="calculateSSS(document.getElementById('SSSInput').value)">Calculate</button>
+                      <p id = "SSSResult">Monthly Contribution: </p>
+                  </div>
+              </div> 
+            </td>
+            <td colspan = 2>
+              <div class = "card">
+                <div class = "container">
+                    <h4><b> PhilHealth Contribution </b></h4>
+                    <h3>Monthly Income</h3>
+                    <input type ="number" id="PhilHealthInput">
+                    <button onclick="calculatePhilHealth(document.getElementById('PhilHealthInput').value)">Calculate</button>
+                    <p id = "PhilHealthResult">Monthly Contribution: </p>
+                    <p id = "PhilHealthNote"> The employee and the employer will both have 50% of the total calculated contribution</p>
+                </div>
+              </div> 
+            </td>
+            <td colspan = 2>
+              <div class = "card">
+                <div class = "container">
+                    <h4><b> Pag-IBIG Contribution </b></h4>
+                    <ul>
+                      <li class = "paginput" >
+                        <input type="radio"  id="Self-Employed" name="employmentType" value="Self-Employed">
+                      <label for="Self-Employed">Self-Employed</label><br>
+                      </li>
+                      <li class = "paginput">
+                        <input type="radio"  id="OFW" name="employmentType" value="OFW">
+                      <label for="OFW">OFW</label><br>
+                      </li>
+                      <li class = "paginput">
+                        <input type="radio" id="Other" name="employmentType" value="Other">
+                      <label for="Other">Other</label><br>
+                      </li>
+                      
+                      
+                      
+                    </ul>
+                    
+
+                    <h3>Monthly Income</h3>
+                    <input type ="number" id="PagIBIGInput">
+                    <button onclick="calculatePagIBIG(document.getElementById('PagIBIGInput').value)">Calculate</button>
+                    <p id = "PagIBIGResult">Monthly Contribution: <br><br>Employer's Contribution:<br> </p>
+                    <p id = "PagIBIGNote"></p>
+                </div>
+              </div> 
+            </td>
+            <td colspan = 2>
+              <div class = "card">
+                <div class = "container">
+                    <h4 style ="font-size:3.5rem;margin-bottom:1.3rem;margin-top:2rem;"><b> VAT </b></h4>
+                    <h3>Vat Rate</h3>
+                    <input type ="number" id="VATRateInput" value = "12">
+                    <h3>Vat GROSS</h3>
+                    <input type ="number" id="VATGrossInput">
+                    <button onclick="calculateVAT(document.getElementById('VATRateInput').value,document.getElementById('VATGrossInput').value)">Calculate</button>
+                    <p id = "VATResult">Vat: </p>
+                    <p id = "VATNote"> The general rate of VAT in the Philippines is 12%, though there are some with no VAT</p>
+                </div>
+              </div> 
+            </td>
+          </tr>
+          <tr>
+              <!-- Income Tax -->
+              <td colspan = "4" text-align="center">
+              <div class = "card">
+                <div class = "container">
+                    <h4 style ="font-size:3.5rem;margin-bottom:0;margin-top:2rem;"><b> INCOME TAX </b></h4>
+                    <p id ="radioLabel" style="margin-bottom:0px">Number of Children</p>
+                    <ul>
+                      <li><div class = "centeredNav">
+                        <input type="radio" id="Zero" name="numOfChildren" value="Zero">
+                        <label for="Zero">0</label><br></div>
+                      </li>
+                      <li><div class = "centeredNav">
+                        <input type="radio" id="One" name="numOfChildren" value="One">
+                        <label for="One">1</label><br>
+                      </div>
+                      </li>
+                      <li>
+                        <div class = "centeredNav">
+                        <input type="radio" id="Two" name="numOfChildren" value="Two">
+                    <label for="Two">2</label><br></div>
+                      </li>
+                      <li>
+                        <div class ="centeredNav">
+                        <input type="radio" id="Three" name="numOfChildren" value="Three">
+                    <label for="Three">3</label><br></div>
+                      </li>
+                      <li><div class = "centeredNav">
+                        <input type="radio" id="Four" name="numOfChildren" value="Four">
+                        <label for="Four">4</label><br>
+                      </div>
+                      </li>
+                    </ul>
+                    
+                    <p id ="radioLabel" style="margin-bottom:-20px">Employment Type</p>
+                    <br>
+                    <ul style="margin-bottom: -50px">
+                        <li><div class = "centeredNav">
+                          <input type="radio" id="Private Company" name="employmentType2" value="Private Company">
+                          <label for="Private Company">Private Company</label><br>
+                        </div>
+                        </li>
+                        <li>
+                          <div class = "centeredNav">
+                          <input type="radio" id="OFW2" name="employmentType2" value="OFW">
+                      <label for="OFW2">OFW</label><br>
+                    </div>
+                        </li>
+                        <li>
+                          <div class = "centeredNav">
+                      <input type="radio" id="Government" name="employmentType2" value="Government">
+                      <label for="Government">Government</label><br>
+                    </div>
+                        </li>
+                    </ul>
+                    <br><br><br>
+                   
+
+                    <input type ="number" id="incomeInput">
+                    <button onclick="calculateIncomeTax(document.getElementById('incomeInput').value)">Calculate</button>
+                    <p id = "incomeTaxResult">Total tax due: <br>Net Pay after tax: <br>Total Contribution: <br>Net take home pay:  </p>
+                    <p id = "incomeTaxNote"></p>
+                </div>
+              </td>
+              <td colspan = "4" text-align="center">
+              <div class = "card">
+                  <div class = "container">
+                      <h4><b> Monthly Contributions - Income Tax Calculation </b></h4>
+                      <p id = "incomeTaxContributionResults">SSS/GSIS: <br>PhilHealth: <br>PagIBIG: </p>
+                  </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan = 8>
+              <h4 style = "color:white;font-size: 3rem">SOURCES</h4>
+              <p style = "color:white">SSS - <a href=https://www.sss.gov.ph/sss/DownloadContent?fileName=ci2020-033.pdf&fbclid=IwAR2e4H0g-mV40qoMUWRpl5-VjfP2Czdlvt93F8Kw6FJvOp95IKrPkn8l8r8>SSS.GOV.PH</a></p>
+              <p style = "color:white">GSIS - <a href="https://www.gsis.gov.ph/active-members/contributions/">GSIS.GOV.PH</a></p>
+              <p style = "color:white">PhilHealth - <a href="https://www.philhealth.gov.ph/news/2019/new_contri.php#gsc.tab=0">PHILHEALTH.GOV.PH</a></p>
+              <p style = "color:white">PagIBIG - <a href="https://www.pagibigfund.gov.ph/document/pdf/circulars/provident/HDMF%20Circular%20No.%20274%20-%20Revised%20Guidelines%20on%20Pag-IBIG%20Fund%20Membership.pdf">PAGIBIGFUND.GOV.PH</a></p>
+              <p style = "color:white">VAT - <a href="https://www.bir.gov.ph/index.php/tax-information/value-added-tax.html">BIR.GOV.PH</a></p>
+              <p style = "color:white">INCOME TAX - <a href = "https://www.rappler.com/newsbreak/iq/tax-calculator-compute-new-income-tax-train-law">RAPPLER ARTICLE ON BIR CIRCULAR MEMORANDUM</a></p>
+            
+            </td>
+          </tr>
+        </table>
+        
+
+        
+
+        <!-- JS Code-->
+        <script src="script.js"></script>
+      </body>
+</html>
